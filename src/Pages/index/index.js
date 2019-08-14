@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import '../../common/css/common.scss'
+import "./index.scss"
 import indexvue from "./index.vue"
 function component() {
     var element = document.createElement('div');
