@@ -39,16 +39,6 @@ module.exports = {
                 //exclude: /node_modules|packages/,  exclude代表不需要进行 loader 的目录
                 include: path.resolve(__dirname, "../src"), //include代表需要进行 loader 的目录
                 use: 'babel-loader',
-                // options: {
-                //   plugins: [
-                //     ['transform-runtime', {
-                //       "helpers": false,
-                //       "polyfill": true,
-                //       "regenerator": false,
-                //       "moduleName": "babel-runtime"
-                //     }]
-                //   ]
-                // },
             },
             {
                 test: /\.(sa|sc|c)ss$/,

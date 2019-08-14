@@ -15,3 +15,25 @@ function component() {
 }
 
 document.body.appendChild(component());
+
+function* kk() {
+    yield '1';
+    yield '2';
+    return 3;
+}
+var k = kk();
+
+console.log(k.next().value);
+console.log(k.next().value);
+
+let t = new Promise((s,f)=>{
+	console.log("promise 定义2秒后打印");
+	setTimeout(()=>{
+		s();
+	},2000)
+});
+console.log("3秒后再then");
+setTimeout(()=>{
+	console.log("3秒后");
+	t.then(()=>{console.log("2秒后promise打印")})
+},3000)
