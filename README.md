@@ -6,6 +6,7 @@ vue
 脚手架
 
 包括多页应用
+    
 {
   "name": "Webpack4-Frame",
   "version": "0.1.0",
