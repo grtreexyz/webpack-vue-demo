@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --progress  --config ./config/webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --config ./config/webpack.dev.js",
-    "watch": "cross-env NODE_ENV=production webpack-dev-server --open --hot --progress --config ./config/webpack.watch.js"
+    "build": "webpack --progress  --config ./config/webpack.prod.js",
+    "dev": "webpack-dev-server --open --hot --progress --config ./config/webpack.dev.js",
+    "watch": "webpack --progress  --config ./config/webpack.watch.js",
+    "browersync":"npx browser-sync start --proxy \"localhost:10001\" --files \"**/*.css, **/*.html, **/*.js\"",
+    "watch2":"npx concurrently \"npm run watch\" \"npm run browersync\""
   },
   "author": "shuchong.luan",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "browser-sync": "^2.26.7",
     "clean-webpack-plugin": "^1.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "*",
@@ -33,7 +36,6 @@
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.1.5"
   },
   "dependencies": {
