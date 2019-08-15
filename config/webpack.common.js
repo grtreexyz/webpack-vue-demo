@@ -28,10 +28,6 @@ htmls.forEach((filePath) => { //遍历扫描到的页面模板路径
 
 module.exports = {
     entry: entrys,
-    output: { //公共output
-        path: path.join(__dirname, '../dist'),
-        filename: process.env.NODE_ENV == "production" ? 'js/[name].[chunkhash:6].js' : 'js/[name].js', //根据入口文件分为不同出口文件
-    },
     module: {
         rules: [ //公共配置加载器
             {

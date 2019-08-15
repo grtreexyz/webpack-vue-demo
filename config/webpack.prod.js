@@ -7,6 +7,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); /
 module.exports = merge(common, {
     //devtool: 'cheap-module-source-map', //生产模式启用代码跟踪
     mode:'production',
+    output: { //公共output
+        path: path.join(__dirname, '../dist'),
+        filename: process.env.NODE_ENV == "production" ? 'js/[name].[chunkhash:6].js' : 'js/[name].js', //根据入口文件分为不同出口文件
+    },
     plugins: [
         new MiniCssExtractPlugin({ //生产模式使用分离代码插件
             filename: 'css/[name].[chunkhash:6].css'
