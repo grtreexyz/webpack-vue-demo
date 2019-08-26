@@ -26,3 +26,16 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App)
 }).$mount('#app')
+////
+class PriorityQueue{
+	constructor(){
+		this.q=[];
+	}
+	add(a){
+		this.q.push(a);
+	}
+}
+let p = new PriorityQueue();
+
+console.log(p);
+p.add(1);

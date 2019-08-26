@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress  --config ./config/webpack.prod.js",
-    "dev": "webpack-dev-server --open --hot --progress --config ./config/webpack.dev.js",
-    "watch": "webpack --progress  --config ./config/webpack.watch.js",
-    "browersync":"npx browser-sync start --proxy \"localhost:10001\" --files \"**/*.css, **/*.html, **/*.js\"",
-    "watch2":"npx concurrently \"npm run watch\" \"npm run browersync\""
+    "build": "webpack --config ./config/webpack.prod.js",
+    "dev": "webpack-dev-server --open --hot --config ./config/webpack.dev.js",
+    "watch": "webpack --config ./config/webpack.watch.js"
   },
   "author": "shuchong.luan",
   "license": "ISC",
@@ -20,6 +18,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^1.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "*",

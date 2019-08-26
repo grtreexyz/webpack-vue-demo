@@ -14,6 +14,6 @@ export default {
 
 <style>
 .example {
-  color: red;
+  color: blue;
 }
 </style>

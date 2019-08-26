@@ -4,11 +4,13 @@ const webpack = require('webpack');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); //生产模式使用分离代码插件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); //生产模式使用压缩代码插件
-
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+    //"browersync": "npx browser-sync start --proxy \"localhost:10001\" --files \"**/*.css, **/*.html, **/*.js\"",
+    //"watch2": "npx concurrently \"npm run watch\" \"npm run browersync\""
 module.exports = merge(common, {
     devtool: 'cheap-module-source-map', //生产模式启用代码跟踪
-    mode:'production',
-    watch:true,
+    mode: 'production',
+    watch: true,
     output: { //公共output
         path: path.join(__dirname, '../dist'),
         filename: 'js/[name].js?[hash]', //根据入口文件分为不同出口文件
@@ -23,7 +25,28 @@ module.exports = merge(common, {
             cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
             canPrint: true
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new BrowserSyncPlugin(
+            // BrowserSync options
+            {
+                // browse to http://localhost:3000/ during development
+                host: 'localhost',
+                port: 3333,
+                server: "./dist",
+                files: ["**/*.css", "**/*.html", "**/*.js"],
+                ignored:"node_moodules"
+                // proxy the Webpack Dev Server endpoint
+                // (which should be serving on http://localhost:3100/)
+                // through BrowserSync
+                //proxy: 'http://localhost:3100/'
+            },
+            // plugin options
+            {
+                // prevent BrowserSync from reloading the page
+                // and let Webpack Dev Server take care of this
+                reload: false
+            }
+        )
     ],
     optimization: {
         splitChunks: {
