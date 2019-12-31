@@ -25,7 +25,20 @@ htmls.forEach((filePath) => { //遍历扫描到的页面模板路径
         })
     )
 });
-
+/*
+    new HtmlWebpackPlugin({
+        template: "index.html",
+        inject: false,
+        "files":  {
+          "chunks": {
+            "index": {
+              "entry": "layout.js",
+              //"css": ["layout.css"]
+            }
+          }
+        }
+    })
+   */
 module.exports = {
     entry: entrys,
     module: {
@@ -49,8 +62,18 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: {
-                    loaders: {}
-                    // other vue-loader options go here
+                  loaders: {
+                    sourceMap: true,
+                    extract: false
+                  },
+                  cssSourceMap: true,
+                  cacheBusting: false,
+                  transformToRequire: {
+                    video: 'src',
+                    source: 'src',
+                    img: 'src',
+                    image: 'xlink:href'
+                  }
                 }
             },
         ]
@@ -59,5 +82,6 @@ module.exports = {
     externals: {
       jquery: 'jQuery',
       vue:'Vue'
-    }
+    },
+    target: "web"
 };
